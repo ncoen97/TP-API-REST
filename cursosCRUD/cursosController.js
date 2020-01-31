@@ -1,5 +1,7 @@
 const Curso = require('../models/Curso');
 
+const { validationResult } = require('express-validator');
+
 const getCursos = (req, res, next) => {
     const query = req.query || {};
 
@@ -46,7 +48,7 @@ const getCurso = (req, res, next) => {
 };
 
 const postCurso = (req, res, next) => {
-
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({
             code: 10,

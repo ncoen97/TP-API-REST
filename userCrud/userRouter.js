@@ -13,7 +13,7 @@ userRouter.post("/", (req, res, next) => {
         });
         newUser.save().then((response) => {
             res.status(201).json({
-                message: "User successfully created!",
+                message: "Usuario creado",
                 result: response
             });
         }).catch(error => {
@@ -33,7 +33,7 @@ userRouter.post("/login", (req, res, next) => {
     }).then(user => {
         if (!user) {
             return res.status(401).json({
-                message: "Authentication failed"
+                message: "Error en la authentication"
             });
         }
         getUser = user;
@@ -41,7 +41,7 @@ userRouter.post("/login", (req, res, next) => {
     }).then(response => {
         if (!response) {
             return res.status(401).json({
-                message: "Authentication failed"
+                message: "Error en la authentication"
             });
         }
         let jwtToken = jwt.sign({
@@ -56,7 +56,7 @@ userRouter.post("/login", (req, res, next) => {
         });
     }).catch(err => {
         return res.status(401).json({
-            message: "Authentication failed"
+            message: "Error en la authentication"
         });
     });
 });

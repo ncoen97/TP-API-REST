@@ -1,7 +1,5 @@
 const Curso = require('../models/Curso');
 
-const { validationResult } = require('express-validator');
-
 const getCursos = (req, res, next) => {
     const query = req.query || {};
 
@@ -48,7 +46,6 @@ const getCurso = (req, res, next) => {
 };
 
 const postCurso = (req, res, next) => {
-    const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -58,12 +55,11 @@ const postCurso = (req, res, next) => {
     }
 
     const body = req.body;
-    console.log(body);
     const newCurso = new Curso({
         anio_de_dictado: body.anio_de_dictado,
         duracion: body.duracion,
         tema: body.tema,
-        alumnos: body.alumnos
+        alumno: body.alumno
     });
 
     newCurso.save()

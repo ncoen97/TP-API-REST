@@ -12,6 +12,11 @@ tags:
   description: "Todos sobre los cursos"
 - name: "users"
   description: "Operations about user"
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: authorization
+    in: header
 schemes:
 - "http"
 paths:
@@ -195,24 +200,19 @@ paths:
       responses:
         '200':
           description: "Usuario creado"
-          schema: 
+          schema:
             $ref: '#/definitions/Auth'
         401:
           description: "Error en la autenticacion"
-securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: authorization
-    in: header
 definitions:
   Curso:
     type: "object"
     properties:
-      anio_de_dictado: 
+      anio_de_dictado:
         type: "integer"
-      duracion: 
+      duracion:
         type: "integer"
-      tema: 
+      tema:
         type: "string"
       alumno:
         type: "array"
@@ -249,9 +249,9 @@ definitions:
     properties:
       token:
         type: "string"
-      expiresIn: 
+      expiresIn:
         type: "integer"
-      msg: 
+      msg:
         type: "string"
     xml:
       name: "Auth"

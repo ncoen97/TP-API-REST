@@ -8,7 +8,7 @@ const cursosRouter = require('./cursosCRUD/cursosRouter');
 const userRouter = require('./userCrud/userRouter')
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');

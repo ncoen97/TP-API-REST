@@ -12,6 +12,7 @@ userRouter.post("/", (req, res, next) => {
             password: hash
         });
         newUser.save().then((response) => {
+            console.log("Usuario creado")
             res.status(201).json({
                 message: "Usuario creado",
                 result: response
@@ -20,6 +21,10 @@ userRouter.post("/", (req, res, next) => {
             res.status(500).json({
                 error: error
             });
+        });
+    }).catch((error) => {
+        res.status(500).json({
+            error: error
         });
     });
 });
@@ -49,6 +54,7 @@ userRouter.post("/login", (req, res, next) => {
         }, "longer-secret-is-better", {
             expiresIn: "1h"
         });
+        console.log("Usuario logeado")
         res.status(200).json({
             token: jwtToken,
             expiresIn: 3600,
